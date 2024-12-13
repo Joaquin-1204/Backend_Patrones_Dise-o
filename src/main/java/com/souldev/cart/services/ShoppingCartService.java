@@ -12,14 +12,13 @@ import java.util.List;
 @Transactional
 public class ShoppingCartService {
 
-    private static ShoppingCartService instance; //Instancia unica de la clase
+    private static ShoppingCartService instance;
     private final ShoppingCartRepository shoppingCartRepository;
     @Autowired
     public ShoppingCartService(ShoppingCartRepository shoppingCartRepository) {
         this.shoppingCartRepository = shoppingCartRepository;
     }
 
-    //Método sincronized para obtener la instancia unica de ShoppingCartRepository
     public static synchronized ShoppingCartService getInstance(ShoppingCartRepository shoppingCartRepository) {
         if (instance == null) {
             instance = new ShoppingCartService(shoppingCartRepository);
